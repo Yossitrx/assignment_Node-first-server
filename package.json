@@ -1,0 +1,22 @@
+{
+  "name": "assignment-0",
+  "version": "1.0.0",
+  "description": "First task",
+  "main": "index.js",
+  "scripts": {
+    "test": "good luck to me"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yossitrx/assignment_Node-first-server.git"
+  },
+  "author": "Yossi Azoulay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yossitrx/assignment_Node-first-server/issues"
+  },
+  "homepage": "https://github.com/Yossitrx/assignment_Node-first-server#readme",
+  "dependencies": {
+    "moment": "^2.12.0"
+  }
+}
