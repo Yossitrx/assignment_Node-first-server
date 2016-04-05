@@ -4,31 +4,36 @@ var eventConfig = require("../config");
 var moment = require('moment');
 
 //global variable
-var log = "";
+var logFile = "";
 
 module.exports = class Developer extends EventEmitter {
-    
+    //c'tor
     constructor(developerName,developerLang,baseSalary){
         super();
-        this.name = developerName;
+        this.devName = developerName;
         this.lang = developerLang;
-        this.likes = 0;
+        this.rate = 0;
         this.promot  = 0;
         this.salary = baseSalary; 
     }
-    
+    //returning the log file
+    getLog(){
+        return logFile;
+    }
+    //rate rating goes up
     like(){
-        this.likes++;
-        this.emit(eventConfig.ManageLikes);
+        this.rate++;
+        this.emit(eventConfig.Managerate);
     }
-    
-    unlike(){
-        this.likes--;
-        if(this.likes < 0)this.likes = 0;
-        this.emit(eventConfig.ManageLikes);
+    //rate rating goes done (rate = 0)
+    disLike(){
+        this.rate--;
+        if(this.rate < 0){
+            this.rate = 0;
+        }
+        this.emit(eventConfig.Managerate);
     }
-    
-    
+
     //If developer gets more then 5 promotion he will get a raise
     promotion(){
         this.promot++;
@@ -36,21 +41,20 @@ module.exports = class Developer extends EventEmitter {
             this.promot = 1; 
             this.salary+=500; 
         }
+        this.emit(eventConfig.Managerate);
     }
-    
-    getMessage(){
-        var message = "Developer name: " + this.name + "\n" + "Programing language: " + this.lang + "\n" + "Liks:" + this.likes + "\n" + "Prometion status: " + this.promot + "\n" + "Salary: " + this.salary;
+    //toString method
+    printString(){
+        var message = "Developer name: " + this.devName + "\n" + "Programing language: " + this.lang + "\n" + "Liks:" + this.rate + "\n" + "Prometion status: " + this.promot + "\n" + "Salary: " + this.salary;
         return message;
     }
-    getLog(){
-        return log;
-    }
-    
-    displayInformetion() {
-        var details = "Developer name: " + this.name + "\n" + "Programing language: " + this.lang + "\n" + "Liks:" + this.likes + "\n" + "Prometion status: " + this.promot + "\n";
+
+    Informetion() {
+        var info = "Developer name: " + this.devName + "\n" + "Programing language: " + this.lang + "\n" + "Liks:" + this.rate + "\n" + "Prometion status: " + this.promot + "\n";
         var time = moment().format("YYYY-MM-DD HH:mm");
-        log += details + time + "\n\n";
-        console.log(details); 
+        logFile += info + time + "\n\n";
+        //print to the terminal
+        console.log(logFile);
     }
 }
 
