@@ -1,0 +1,9 @@
+# Welcome to Developer rating Server #
+
+  name: assignment-0
+  version: 1.0
+  description: Yossi First task
+  repository:
+  url: git+https://github.com/Yossitrx/assignment_Node-first-server.git
+  author: Yossi Azoulay
+  dependencies: moment 2.12.0
